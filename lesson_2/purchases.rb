@@ -11,9 +11,9 @@ while 1 > 0
   sum = gets.to_f
   purchses[product] = {'количество'=> qunttity, 'цена' => sum, 'сумма' => qunttity*sum}
 end
-r = 0
+result = 0
 purchses.each do |_,v|
-  r += v['сумма']
+  result += v['сумма']
 end
 puts purchses
-puts "сумма всех покупок: #{r} $"
+puts "сумма всех покупок: #{result} $"
