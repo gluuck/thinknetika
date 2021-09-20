@@ -15,11 +15,11 @@ def list_trains
   @list_trains.each {|name| puts name} 
 end
 
-def trains_type(train_type)
-  @list_trains.select{|type| type == train_type}.count
+def trains_type(type)
+  @list_trains.select{|train| train.type == type}.count
 end
 
-def remove_train
-  @list_trains.shift
+def remove_train(train)
+  @list_trains.delete(train)
 end
 end
