@@ -1,25 +1,21 @@
 class Station
   attr_reader :name
-  attr_accessor :list_trains
+  attr_accessor :trains
 
-def initialize(name)
-  @name = name
-  @list_trains = []
-end
+  def initialize(name)
+    @name = name
+    @trains = []
+  end
 
-def add_train(train)
-  @list_trains << train
-end
+  def add_train(train)
+    @trains << train
+  end
 
-def list_trains
-  @list_trains.each {|name| puts name} 
-end
+  def trains_by_type(type)
+    @trains.select{|train| train.type == type}
+  end
 
-def trains_type(type)
-  @list_trains.select{|train| train.type == type}.count
-end
-
-def remove_train(train)
-  @list_trains.delete(train)
-end
+  def remove_train(train)
+    @trains.delete(train)
+  end
 end

@@ -1,29 +1,28 @@
 class Train  
   attr_accessor :speed
-  attr_reader  :number_of_train,:type_of_train,:num_wagons, :current_station  
+  attr_reader  :number, :type, :num_wagons, :current_station  
 
   def initialize(number_of_train,type_of_train,num_wagons)    
-    @number_of_train = number_of_train
-    @type_of_train = type_of_train
+    @number = number_of_train
+    @type = type_of_train
     @num_wagons = num_wagons
     @speed = 0
   end
 
-  def pick_up_speed(speed)
-    @speed += speed if @speed >= 0
+  def pick_up_speed(value)
+    self.speed += value if value >= 0
   end
 
   def stop_train
-    @speed = 0
+    self.speed = 0
   end
 
-  def change_wagons
-    if @speed.zero?
-      @num_wagons += 1 if @num_wagons < 20
-      @num_wagons -= 1 if @num_wagons > 20
-    else
-      p 'Can`t change number'
-    end
+  def add_wagon    
+    @num_wagons += 1 if self.speed.zero?
+  end   
+
+  def remove_wagon
+    @num_wagons -= 1 if self.speed.zero?    
   end
 
   def take_a_route(route)
@@ -48,6 +47,6 @@ class Train
   end
 
   def move_back
-      @current_station.remove_train(self)
+    @current_station.remove_train(self)
   end
 end
