@@ -29,7 +29,7 @@ class Train
   def take_a_route(route)
     @current_station_route = route
     @current_station = @current_station_route.stations.first
-    @curent_station.add_train
+    @curent_station.add_train(self)
   end
   
   def next_station
@@ -44,10 +44,10 @@ class Train
 
   def move_forward
     next_station
-    @current_station.add_train
+    @current_station.add_train(self)
   end
 
   def move_back
-      @current_station.remove_train
+      @current_station.remove_train(self)
   end
 end
