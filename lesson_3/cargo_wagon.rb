@@ -1,7 +1,7 @@
 require_relative 'wagon'
 
 class CargoWagon
-  def initialize(_)
-    @type = 'cargo'
+  def type
+    'cargo'
   end
 end
