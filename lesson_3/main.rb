@@ -5,19 +5,9 @@ require_relative 'route'
 require_relative 'passenger_wagon'
 require_relative 'cargo_wagon'
 
-class Railway
-   attr_reader :stations, :trains, :routes, :wagons
+class Railway  
+  attr_reader :stations, :trains, :routes, :wagons
 
-
-  puts 'You can create stations , trains, routes and stations in there ,get a route to train,
-        add wagons to train, remove wagons of train ,view the list of stations 
-        and the list of trains at the station'
-
-  puts 'Choose your variant : "create station","create train", "create route", "add station",
-        "remove station from route", "get route to train", "add wagon", "remove wagon", "move forward",
-        "move back", "show stations" , "show trains"'   
-
-  #action = gets.chomp.downcase
   def initialize
     @stations = []    
     @trains = []
@@ -35,24 +25,24 @@ class Railway
     type = gets.chomp.downcase
     case type
     when 'cargo'
-      @trains << CargoTrain.new(number,type)
+      @trains << CargoTrain.new(number, type)
     when 'passenger'
-      @trains << PassengerTrain.new(number,type)
+      @trains << PassengerTrain.new(number, type)
     else
       puts 'Can`t create a train'
-    end   
+    end
   end
 
   def new_route
-    @routes << Route.new(@stations.first.name,@stations.last.name)
+    @routes << Route.new(@stations.first, @stations.last)
   end
 
   def add_station(index_route,index_station)
-    @routes[index_route].add_station(@stations[index_station].name)
+    @routes[index_route].add_station(@stations[index_station])
   end
 
   def remove_station(index_route,index_station)
-    @routes[index_route].delete_station("#{@stations[index_station].name}")
+    @routes[index_route].delete_station(@stations[index_station])
   end
 
   def get_route(index_train,index_route)
@@ -64,11 +54,51 @@ class Railway
     @trains[index_train].add_wagon(PassengerWagon.new) if @trains[index_train].type == 'passenger'
   end
 
-  def remove_wagon
-    super
+  def remove_wagon(index_train, index_wagon)
+    @trains[index_train].remove_wagon(@trains[index_train].wagons[index_wagon])
   end
 
-  def method_name
-    
+  def move_forward(index_train)
+    @trains[index_train].move_forward    
+  end
+
+  def move_back(index_train)
+    @trains[index_train].move_back
+  end
+
+  def list_stations
+    p @stations.map(&:name).join(' ')
+  end
+
+  def list_trains
+    p @trains.map(&:number).join(' ')
   end
 end 
+
+railway = Railway.new
+
+
+loop do
+  puts 'Choose your variant : "create station","create train", "create route", "add station",
+       "remove station", "get route to train", "add wagon", "remove wagon", "move forward",
+       "move back", "show stations" , "show trains"'
+
+  action = gets.chomp.downcase
+
+  case action
+  when 'create station' then railway.new_station
+  when 'create train'   then railway.new_train
+  when 'create route'   then railway.new_route
+  when 'add station'    then railway.add_station
+  when 'remove station' then railway.remove_station
+  when 'get route'      then railway.get_route
+  when 'add wagon'      then railway.add_wagon
+  when 'remove wagon'   then railway.remove_wagon
+  when 'move forward'   then railway.move_forward
+  when 'move back'      then railway.move_back
+  when 'show stations'  then railway.list_stations
+  when 'show trains'    then railway.list_trains
+  else
+    break
+  end
+end

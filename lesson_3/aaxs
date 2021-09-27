@@ -1,0 +1,38 @@
+=> [32m#<Railway:0x0000565032a1cf88[0m
+ @routes[32m=[0m
+  [[32m#<Route:0x000056503255a220[0m @stations[32m=[0m[[31m[1;31m"[0m[31mdddd[1;31m"[0m[31m[0m, [32m#<Station:0x00005650328f7e50[0m @name[32m=[0m[31m[1;31m"[0m[31maaas[1;31m"[0m[31m[0m, @trains[32m=[0m[][32m>[0m, [31m[1;31m"[0m[31mdadswqwq[1;31m"[0m[31m[0m][32m>[0m,
+   [32m#<Route:0x000056503240c940[0m @stations[32m=[0m[[31m[1;31m"[0m[31mdddd[1;31m"[0m[31m[0m, [31m[1;31m"[0m[31mppuouoyptkhbkh[1;31m"[0m[31m[0m][32m>[0m],
+ @stations[32m=[0m
+  [[32m#<Station:0x0000565032991a50[0m @name[32m=[0m[31m[1;31m"[0m[31mdddd[1;31m"[0m[31m[0m, @trains[32m=[0m[][32m>[0m,
+   [32m#<Station:0x00005650328f7e50[0m @name[32m=[0m[31m[1;31m"[0m[31maaas[1;31m"[0m[31m[0m, @trains[32m=[0m[][32m>[0m,
+   [32m#<Station:0x000056503285fcb8[0m @name[32m=[0m[31m[1;31m"[0m[31mdadswqwq[1;31m"[0m[31m[0m, @trains[32m=[0m[][32m>[0m,
+   [32m#<Station:0x000056503240f370[0m @name[32m=[0m[31m[1;31m"[0m[31masdswqwqwqefvc[1;31m"[0m[31m[0m, @trains[32m=[0m[][32m>[0m,
+   [32m#<Station:0x000056503282b328[0m @name[32m=[0m[31m[1;31m"[0m[31mppuouoyptkhbkh[1;31m"[0m[31m[0m, @trains[32m=[0m[][32m>[0m],
+ @trains[32m=[0m
+  [[32m#<CargoTrain:0x0000565032a43e30[0m
+    @number[32m=[0m[1;34m111[0m,
+    @speed[32m=[0m[1;34m0[0m,
+    @type[32m=[0m[31m[1;31m"[0m[31mcargo[1;31m"[0m[31m[0m,
+    @wagons[32m=[0m
+     [[32m#<CargoWagon:0x00005650327e7e98[0m[32m>[0m,
+      [32m#<CargoWagon:0x0000565032335af8[0m[32m>[0m,
+      [32m#<CargoWagon:0x0000565032a6d988[0m[32m>[0m,
+      [32m#<CargoWagon:0x0000565032a12d08[0m[32m>[0m,
+      [32m#<CargoWagon:0x00005650329b7db8[0m[32m>[0m,
+      [32m#<CargoWagon:0x0000565032970288[0m[32m>[0m,
+      [32m#<CargoWagon:0x00005650328f6c80[0m[32m>[0m][32m>[0m,
+   [32m#<CargoTrain:0x00005650329c0710[0m
+    @number[32m=[0m[1;34m222[0m,
+    @speed[32m=[0m[1;34m0[0m,
+    @type[32m=[0m[31m[1;31m"[0m[31mcargo[1;31m"[0m[31m[0m,
+    @wagons[32m=[0m[[32m#<CargoWagon:0x00005650329b59c8[0m[32m>[0m, [32m#<CargoWagon:0x0000565032565e68[0m[32m>[0m][32m>[0m,
+   [32m#<PassengerTrain:0x00005650328df800[0m
+    @number[32m=[0m[1;34m333[0m,
+    @speed[32m=[0m[1;34m0[0m,
+    @type[32m=[0m[31m[1;31m"[0m[31mpassenger[1;31m"[0m[31m[0m,
+    @wagons[32m=[0m
+     [[32m#<PassengerWagon:0x0000565032958138[0m[32m>[0m,
+      [32m#<PassengerWagon:0x000056503215e360[0m[32m>[0m,
+      [32m#<PassengerWagon:0x0000565032a1f210[0m[32m>[0m,
+      [32m#<PassengerWagon:0x00005650329b73e0[0m[32m>[0m][32m>[0m],
+ @wagons[32m=[0m[][32m>[0m
