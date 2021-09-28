@@ -1,4 +1,4 @@
-class Train  
+class Train
   attr_accessor :speed
   attr_reader :number, :type, :current_station_index, :wagons
 
@@ -8,7 +8,7 @@ class Train
     @speed = 0
     @wagons = []
     @current_station_index = 0
-  end  
+  end
 
   def pick_up_speed(value)
     self.speed += value if value >= 0
@@ -19,7 +19,7 @@ class Train
   end
 
   def add_wagon(wagon)
-    @wagons.push(wagon) if self.speed.zero?
+    @wagons.push(wagon) if self.type == wagon.type && self.speed.zero?
   end
 
   def remove_wagon(wagon)
@@ -31,12 +31,12 @@ class Train
     @current_station = route.stations.first
     @current_station.add_train(self)
   end
-  
-  def next_station    
+
+  def next_station
     @current_station = @current_route.stations[@current_station_index += 1]
   end
 
-  def previos_station 
+  def previos_station
     @current_station = @current_route.stations[@current_station_index -= 1] if @current_route.stations.size.positive?
   end
 
