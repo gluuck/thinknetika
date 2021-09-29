@@ -1,10 +1,18 @@
 class Station
-  attr_reader :name
-  attr_accessor :trains
+  attr_reader :name, :trains
+ 
+  extend InstanceCounter
+  
+  @@stations = []
+
+  def self.all
+    @@stations
+  end
 
   def initialize(name)
     @name = name
     @trains = []
+    @@stations.push(self)
   end
 
   def add_train(train)

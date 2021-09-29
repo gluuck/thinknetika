@@ -1,6 +1,13 @@
+require_relative 'manufacturer'
+
 class Train
-  attr_accessor :speed
-  attr_reader :number, :type, :current_station_index, :wagons
+  attr_accessor :speed, :number
+  attr_reader :type, :current_station_index, :wagons
+
+  include Manufacturer
+  extend InstanceCounter
+  
+  @@trains = []
 
   def initialize(number, type)
     @number = number
@@ -8,6 +15,11 @@ class Train
     @speed = 0
     @wagons = []
     @current_station_index = 0
+    @@trains.push(self)
+  end
+
+  def self.find(number=nil)
+    @@trains.select{|train| train.number == number}.first
   end
 
   def pick_up_speed(value)
