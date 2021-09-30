@@ -1,12 +1,13 @@
 require_relative 'manufacturer'
+require_relative 'instance_counter'
 
 class Train
   attr_accessor :speed, :number
   attr_reader :type, :current_station_index, :wagons
 
   include Manufacturer
-  extend InstanceCounter
-  
+  extend InstanceCounter::Counter
+
   @@trains = []
 
   def initialize(number, type)
@@ -16,10 +17,11 @@ class Train
     @wagons = []
     @current_station_index = 0
     @@trains.push(self)
+    Train.register_instance
   end
 
   def self.find(number=nil)
-    @@trains.select{|train| train.number == number}.first
+    @@trains.detect{|train| train.number == number}
   end
 
   def pick_up_speed(value)

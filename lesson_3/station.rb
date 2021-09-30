@@ -1,7 +1,9 @@
+require_relative 'instance_counter'
+
 class Station
   attr_reader :name, :trains
  
-  extend InstanceCounter
+  extend InstanceCounter::Counter
   
   @@stations = []
 
@@ -13,6 +15,7 @@ class Station
     @name = name
     @trains = []
     @@stations.push(self)
+    Station.register_instance
   end
 
   def add_train(train)

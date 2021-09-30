@@ -1,13 +1,13 @@
 module InstanceCounter
-  
-  def self.instances
-    @instances
-  end
 
-  private
+  module Counter
+      def instances
+        @instances
+      end
 
-  def register_instance
-    @instances ||= 0
-    @instances += 1
-  end
+      def register_instance
+        @instances ||= 0
+        @instances += 1
+      end    
+  end  
 end
