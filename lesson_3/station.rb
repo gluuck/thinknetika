@@ -3,9 +3,11 @@ require_relative 'instance_counter'
 class Station
   attr_reader :name, :trains
  
-  extend InstanceCounter::Counter
+  include InstanceCounter
   
   @@stations = []
+
+  qty_instance
 
   def self.all
     @@stations
@@ -15,7 +17,7 @@ class Station
     @name = name
     @trains = []
     @@stations.push(self)
-    Station.register_instance
+    register_instance
   end
 
   def add_train(train)

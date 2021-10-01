@@ -4,13 +4,12 @@ class Route
   attr_reader :stations
 
   extend InstanceCounter::Counter
-
-  @@routes = []
   
+  qty_instance
+
   def initialize(fist_station, last_station)
     @stations = [fist_station, last_station]
-    @@routes.push(self)
-    Route.register_instance
+    register_instance
   end
 
   def add_station(station)

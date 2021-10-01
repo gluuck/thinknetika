@@ -6,10 +6,12 @@ class Train
   attr_reader :type, :current_station_index, :wagons
 
   include Manufacturer
-  extend InstanceCounter::Counter
+  include InstanceCounter
 
   @@trains = []
 
+  qty_instance
+  
   def initialize(number, type)
     @number = number
     @type = type
@@ -17,7 +19,7 @@ class Train
     @wagons = []
     @current_station_index = 0
     @@trains.push(self)
-    Train.register_instance
+    register_instance
   end
 
   def self.find(number=nil)

@@ -1,13 +1,22 @@
 module InstanceCounter
 
-  module Counter
-    def instances
-      @instances
-    end
+  def self.included(mixin)
+    mixin.extend Counter
+  end
 
-    def register_instance
+  module Counter
+    attr_accessor :instances
+
+    private
+    
+    def qty_instance
       @instances ||= 0
-      @instances += 1
-    end    
+    end
   end  
+
+  private
+
+  def register_instance
+    self.class.instances += 1
+  end
 end
