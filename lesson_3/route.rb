@@ -3,7 +3,7 @@ require_relative 'instance_counter'
 class Route
   attr_reader :stations
 
-  extend InstanceCounter::Counter
+  include InstanceCounter
   
   qty_instance
 
