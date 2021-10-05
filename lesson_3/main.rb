@@ -4,6 +4,7 @@ require_relative 'cargo_train'
 require_relative 'route'
 require_relative 'passenger_wagon'
 require_relative 'cargo_wagon'
+require_relative 'validator'
 
 class Railway
   attr_reader :stations, :trains, :routes, :wagons
@@ -21,15 +22,13 @@ class Railway
   end
 
   def new_train
-    number = gets.to_i
+    number = gets.chomp.downcase
     type = gets.chomp.downcase
     case type
     when 'cargo'
       trains << CargoTrain.new(number, type)
     when 'passenger'
       trains << PassengerTrain.new(number, type)
-    else
-      puts 'Can`t create a train'
     end
   end
 

@@ -1,10 +1,13 @@
 require_relative 'instance_counter'
+require_relative 'validator'
 
 class Station
   attr_reader :name, :trains
  
   include InstanceCounter
-  
+  include ValidStation
+  include Validator
+
   @@stations = []
 
   qty_instance
@@ -18,6 +21,7 @@ class Station
     @trains = []
     @@stations.push(self)
     register_instance
+    validate!
   end
 
   def add_train(train)

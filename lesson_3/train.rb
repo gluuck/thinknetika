@@ -1,5 +1,6 @@
 require_relative 'manufacturer'
 require_relative 'instance_counter'
+require_relative 'validator'
 
 class Train
   attr_accessor :speed, :number
@@ -7,6 +8,8 @@ class Train
 
   include Manufacturer
   include InstanceCounter
+  include ValidTrain
+  include Validator
 
   @@trains = []
 
@@ -20,6 +23,7 @@ class Train
     @current_station_index = 0
     @@trains.push(self)
     register_instance
+    validate!
   end
 
   def self.find(number=nil)
