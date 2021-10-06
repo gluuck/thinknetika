@@ -6,6 +6,6 @@ class Wagon
   include Manufacturer
 
   def initialize(type)
-    @type = type
+    @type = type   
   end
 end
