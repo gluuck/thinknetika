@@ -22,8 +22,12 @@ class Train
     @wagons = []
     @current_station_index = 0
     @@trains.push(self)
-    register_instance
+    #register_instance
     validate!
+  end
+
+  def self.all
+    @@trains
   end
 
   def self.find(number=nil)

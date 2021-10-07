@@ -5,6 +5,7 @@ require_relative 'route'
 require_relative 'passenger_wagon'
 require_relative 'cargo_wagon'
 require_relative 'validator'
+require_relative 'seed'
 
 class Railway
   attr_reader :stations, :trains, :routes, :wagons
@@ -17,19 +18,11 @@ class Railway
   end
 
   def new_station
-    name = gets.chomp.downcase
-    stations << Station.new(name)
+    Station.all.each{|station| stations << station}
   end
 
   def new_train
-    number = gets.chomp.downcase
-    type = gets.chomp.downcase
-    case type
-    when 'cargo'
-      trains << CargoTrain.new(number, type)
-    when 'passenger'
-      trains << PassengerTrain.new(number, type)
-    end
+    Train.all.each{|train| trains << train}
   end
 
   def new_route
@@ -66,13 +59,12 @@ class Railway
   end
 
   def list_stations
-    p stations
+    stations
   end
 
   def list_trains
-    p trains
+    trains
   end
+
+
 end
-
-
-

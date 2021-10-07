@@ -1,10 +1,10 @@
 require_relative 'wagon'
 
-class CargoWagon
-  attr_accessor :wagon_volume, :occupied_volume, :free_volume
+class CargoWagon < Wagon
+  attr_accessor :wagon_volume, :occupied_volume, :free_volume, :type
 
   def initialize(wagon_volume)
-    super
+    super(self.type)
     @wagon_volume = wagon_volume
     @occupied_volume = nil
   end
