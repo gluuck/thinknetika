@@ -71,4 +71,8 @@ class Train
     previos_station
     @current_station.add_train(self)
   end
+
+  def block_of_wagons
+    wagons.collect(&block) if block_given?
+  end
 end

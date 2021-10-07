@@ -74,32 +74,5 @@ class Railway
   end
 end
 
-railway = Railway.new
 
 
-# loop do
-#   puts 'Choose your variant : "create station","create train", "create route", "add station",
-#        "remove station", "get route", "add wagon(index_train)", "remove wagon(index_train,index_wagon)", "move forward",
-#        "move back", "show stations" , "show trains"'
-#   #p railway
-#
-#   action = gets.chomp.downcase
-#
-#   case action
-#   when 'create station' then p railway.new_station
-#   when 'create train'   then p railway.new_train
-#   when 'create route'   then p railway.new_route
-#   when 'add station'    then p railway.add_station
-#   when 'remove station' then p railway.remove_station
-#   when 'get route'      then railway.get_route
-#   when 'add wagon'      then railway.add_wagon
-#   when 'remove wagon'   then railway.remove_wagon
-#   when 'move forward'   then railway.move_forward
-#   when 'move back'      then railway.move_back
-#   when 'show stations'  then railway.list_stations
-#   when 'show trains'    then railway.list_trains
-#   else
-#
-#   end
-#   p action
-# end

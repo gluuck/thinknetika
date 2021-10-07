@@ -25,14 +25,18 @@ class Station
   end
 
   def add_train(train)
-    @trains << train
+    trains << train
   end
 
   def trains_by_type(type)
-    @trains.select{|train| train.type == type}
+    trains.select{|train| train.type == type}
   end
 
   def remove_train(train)
-    @trains.delete(train)
+    trains.delete(train)
+  end
+
+  def block_trains
+    trains.collect(&block) if block_given?
   end
 end
