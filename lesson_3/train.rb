@@ -14,7 +14,7 @@ class Train
   @@trains = []
 
   qty_instance
-  
+
   def initialize(number, type)
     @number = number
     @type = type

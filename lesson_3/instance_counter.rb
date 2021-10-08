@@ -8,11 +8,11 @@ module InstanceCounter
     attr_accessor :instances
 
     private
-    
+
     def qty_instance
       @instances ||= 0
     end
-  end  
+  end
 
   private
 

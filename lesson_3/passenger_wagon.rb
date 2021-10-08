@@ -6,7 +6,7 @@ class PassengerWagon < Wagon
   def initialize(number_of_seats)
     super(self.type)
     @number_of_seats = number_of_seats
-    @seats = 0
+    @seats = 0  
   end
 
   def take_seat

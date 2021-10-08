@@ -6,6 +6,7 @@ require_relative 'passenger_wagon'
 require_relative 'cargo_wagon'
 require_relative 'validator'
 require_relative 'seed'
+require_relative 'train'
 
 class Railway
   attr_reader :stations, :trains, :routes, :wagons
@@ -41,9 +42,20 @@ class Railway
     trains.fetch(index_train).take_a_route(routes.fetch(index_route))
   end
 
-  def add_wagon(index_train,index)
-    wagon = [CargoWagon.new].fetch(index, PassengerWagon.new)
-    trains.fetch(index_train).add_wagon(wagon)
+  def add_wagon(index_train, index)
+    cargo_wagons = Wagon.all.select{|x| x.type == 'cargo'}
+    pass_wagons = Wagon.all.select{|x| x.type == 'passenger'}
+    if index == 0
+      cargo_wagons.each do |wag|
+        wagon = wag
+        trains.fetch(index_train).add_wagon(wagon)
+      end
+    else
+      pass_wagons.each do |wag|
+        wagon = wag
+        trains.fetch(index_train).add_wagon(wagon)
+      end
+    end
   end
 
   def remove_wagon(index_train, index_wagon)
@@ -66,5 +78,17 @@ class Railway
     trains
   end
 
-
+  def show_stations
+    stations.each do |station|
+      station.trains.each do |train|
+        p "Num wagon: #{train.number},Type: #{train.type}, Qty wagons: #{train.wagons.count}"
+        if train.type == 'cargo'
+          train.wagons.each do |wagon|
+            p "Number: #{wagon.number_wagon}, Type: #{wagon.type}"
+          end
+        elsif train.type == 'passenger'
+        end
+      end
+    end
+  end
 end
