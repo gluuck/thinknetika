@@ -19,7 +19,7 @@ class Wagon
   end
 
   def free_place
-    @free_place = total_place - occupied_place
+    free_place = total_place - occupied_place
   end
 
   def self.all
