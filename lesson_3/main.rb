@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'station'
 require_relative 'passenger_train'
 require_relative 'cargo_train'
@@ -19,40 +21,38 @@ class Railway
   end
 
   def new_station
-    Station.all.each{|station| stations << station}
+    Station.all.each { |station| stations << station }
   end
 
   def new_train
-    Train.all.each{|train| trains << train}
+    Train.all.each { |train| trains << train }
   end
 
   def new_route
     routes << Route.new(stations.first, stations.last)
   end
 
-  def add_station(index_route,index_station)
+  def add_station(index_route, index_station)
     routes.fetch(index_route).add_station(stations.fetch(index_station))
   end
 
-  def remove_station(index_route,index_station)
+  def remove_station(index_route, index_station)
     routes.fetch(index_route).delete_station(stations.fetch(index_station))
   end
 
-  def get_route(index_train,index_route)
+  def get_route(index_train, index_route)
     trains.fetch(index_train).take_a_route(routes.fetch(index_route))
   end
 
   def add_wagon(index_train, index)
-    cargo_wagons = Wagon.all.select{|x| x.type == 'cargo'}
-    pass_wagons = Wagon.all.select{|x| x.type == 'passenger'}
-    if index == 0
-      cargo_wagons.each do |wag|
-        wagon = wag
+    cargo_wagons = Wagon.all.select { |x| x.type == 'cargo' }
+    pass_wagons = Wagon.all.select { |x| x.type == 'passenger' }
+    if index.zero?
+      cargo_wagons.each do |wagon|
         trains.fetch(index_train).add_wagon(wagon)
       end
     else
-      pass_wagons.each do |wag|
-        wagon = wag
+      pass_wagons.each do |wagon|
         trains.fetch(index_train).add_wagon(wagon)
       end
     end
@@ -82,13 +82,15 @@ class Railway
     stations.each do |station|
       station.trains.each do |train|
         p "Num wagon: #{train.number},Type: #{train.type}, Qty wagons: #{train.wagons.count}"
-        if train.type == 'cargo'
+        case train.type
+        when 'cargo'
           train.wagons.each do |wagon|
-            p "Number: #{wagon.number_wagon}, Type: #{wagon.type},Free place: #{wagon.free_place},Occupied: #{wagon.occupied_place}"
+            p wagons = "Number: #{wagon.number_wagon}, Type: #{wagon.type},Free place: #{wagon.free_place},
+                        Occupied: #{wagon.occupied_place}"
           end
-        elsif train.type == 'passenger'
-          train.wagons.each do |wagon|
-            p "Number: #{wagon.number_wagon}, Type: #{wagon.type}, Free seats: #{wagon.free_place},Occupied: #{wagon.occupied_place}"
+        when 'passenger'
+          train.wagons.each do |_wagon|
+            p wagons
           end
         end
       end

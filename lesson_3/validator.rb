@@ -1,31 +1,33 @@
-module ValidTrain
+# frozen_string_literal: true
 
-  NUM = /[\w]{3}-?[\w]{2}/i
+module ValidTrain
+  NUM = /\w{3}-?\w{2}/i.freeze
 
   def validate!
-    raise 'Number must have XXX-XX or XXXXX characters' if self.number !~ NUM
-    raise 'Type must be cargo or passenger' unless ['cargo','passenger'].include? self.type 
-  end  
+    raise 'Number must have XXX-XX or XXXXX characters' if number !~ NUM
+    raise 'Type must be cargo or passenger' unless %w[cargo passenger].include? type
+  end
 end
 
 module ValidRoute
-  
   def validate!
-    raise 'Element must be type Station' unless self.stations.map {|x| x.is_a? Station}.first && self.stations.map {|x| x.is_a? Station}.last
+    raise 'Element must be type Station' unless stations.map { |x| x.is_a? Station }.first && stations.map do |x|
+                                                  x.is_a? Station
+                                         end.last
   end
 end
 
 module ValidStation
-  NAME = /[\w]+/
+  NAME = /\w+/.freeze
   def validate!
-    raise 'Cant be empty'  if self.name !~ NAME
+    raise 'Cant be empty'  if name !~ NAME
   end
 end
 
 module Validator
   def valid?
     validate!
-  rescue
-    false    
+  rescue StandardError
+    false
   end
 end

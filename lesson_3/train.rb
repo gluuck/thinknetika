@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 require_relative 'manufacturer'
 require_relative 'instance_counter'
 require_relative 'validator'
 
 class Train
   attr_accessor :speed, :number
-  attr_reader :type, :current_station_index, :wagons
+  attr_reader :type, :current_station_index, :wagons, :trains
 
   include Manufacturer
   include InstanceCounter
@@ -30,8 +32,8 @@ class Train
     @@trains
   end
 
-  def self.find(number=nil)
-    @@trains.detect{|train| train.number == number}
+  def self.find(number = nil)
+    @@trains.detect { |train| train.number == number }
   end
 
   def pick_up_speed(value)
@@ -43,7 +45,7 @@ class Train
   end
 
   def add_wagon(wagon)
-    @wagons.push(wagon) if self.type == wagon.type && self.speed.zero?
+    @wagons.push(wagon) if type == wagon.type && self.speed.zero?
   end
 
   def remove_wagon(wagon)

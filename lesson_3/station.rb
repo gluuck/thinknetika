@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require_relative 'instance_counter'
 require_relative 'validator'
 
 class Station
   attr_reader :name, :trains
- 
+
   include InstanceCounter
   include ValidStation
   include Validator
@@ -29,7 +31,7 @@ class Station
   end
 
   def trains_by_type(type)
-    trains.select{|train| train.type == type}
+    trains.select { |train| train.type == type }
   end
 
   def remove_train(train)

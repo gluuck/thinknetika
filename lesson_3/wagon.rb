@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'manufacturer'
 
 class Wagon
@@ -11,13 +13,13 @@ class Wagon
     @number_wagon = 0
     @@wagons.push(self)
     @@wagons.size.times do
-      @number_wagon +=1
+      @number_wagon += 1
     end
     @occupied_place = 0
   end
 
   def free_place
-    @free_place = total_place  - occupied_place
+    @free_place = total_place - occupied_place
   end
 
   def self.all

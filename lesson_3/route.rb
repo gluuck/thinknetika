@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require_relative 'instance_counter'
 require_relative 'validator'
 require_relative 'station'
@@ -8,7 +10,7 @@ class Route
   include InstanceCounter
   include ValidRoute
   include Validator
-  
+
   qty_instance
 
   def initialize(fist_station, last_station)
@@ -18,7 +20,7 @@ class Route
   end
 
   def add_station(station)
-    @stations.insert(-2,station)
+    @stations.insert(-2, station)
   end
 
   def delete_station(station)
