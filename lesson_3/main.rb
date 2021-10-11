@@ -84,11 +84,11 @@ class Railway
         p "Num wagon: #{train.number},Type: #{train.type}, Qty wagons: #{train.wagons.count}"
         if train.type == 'cargo'
           train.wagons.each do |wagon|
-            p "Number: #{wagon.number_wagon}, Type: #{wagon.type},Free volume: #{wagon.free_volume},Occupied: #{wagon.occupied_volume}"
+            p "Number: #{wagon.number_wagon}, Type: #{wagon.type},Free place: #{wagon.free_place},Occupied: #{wagon.occupied_place}"
           end
         elsif train.type == 'passenger'
           train.wagons.each do |wagon|
-            p "Number: #{wagon.number_wagon}, Type: #{wagon.type}, Free seats: #{wagon.free_seats},Occupied: #{wagon.occupied_seats}"
+            p "Number: #{wagon.number_wagon}, Type: #{wagon.type}, Free seats: #{wagon.free_place},Occupied: #{wagon.occupied_place}"
           end
         end
       end

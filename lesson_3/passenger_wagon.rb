@@ -1,21 +1,11 @@
 require_relative 'wagon'
 
 class PassengerWagon < Wagon
-  attr_reader :number_of_seats, :occupied_seats, :free_seats, :type
-
-  def initialize(number_of_seats)
-    super(self.type)
-    @number_of_seats = number_of_seats
-  end
-
+  attr_reader :occupied_seats, :free_seats, :type
+ 
   def take_seat
-    @occupied_seats ||= 0
-    @occupied_seats += 1 if @occupied_seats < @number_of_seats
-    free_seats
-  end
-
-  def free_seats
-    @free_seats = @number_of_seats - @occupied_seats
+    @occupied_place += 1 if occupied_place < free_place
+    free_place
   end
 
   def type
