@@ -1,33 +1,25 @@
 # frozen_string_literal: true
-
-module ValidTrain
-  NUM = /\w{3}-?\w{2}/i.freeze
-
-  def validate!
-    raise 'Number must have XXX-XX or XXXXX characters' if number !~ NUM
-    raise 'Type must be cargo or passenger' unless %w[cargo passenger].include? type
-  end
-end
-
-module ValidRoute
-  def validate!
-    raise 'Element must be type Station' unless stations.map { |x| x.is_a? Station }.first && stations.map do |x|
-                                                  x.is_a? Station
-                                         end.last
-  end
-end
-
-module ValidStation
-  NAME = /\w+/.freeze
-  def validate!
-    raise 'Cant be empty'  if name !~ NAME
-  end
-end
-
-module Validator
-  def valid?
-    validate!
-  rescue StandardError
-    false
+# require_relative 'cargo_train'
+# require_relative 'passenger_train'
+# require_relative 'train'
+module Validation
+  def validate(name, type, *args)
+    var_name = "@#{name}".to_sym
+    var_type = "#{type}".to_sym
+    define_method(name){instance_variable_get(var_name)}
+    define_method(type){instance_variable_get(var_type)}
+    define_method("#{name}=".to_sym) do |v|
+      case var_type
+      when :presence
+        raise "#{name} can`t be empty" if v.nil? || v.empty?
+        instance_variable_set(var_name,v)
+      when :type
+        raise TypeError unless v.is_a? args[0]
+        instance_variable_set(var_name,v)
+      when :format
+        raise "not right" if v !~ args[0]
+        instance_variable_set(var_name,v)
+       end
+    end
   end
 end

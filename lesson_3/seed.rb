@@ -17,8 +17,8 @@ end
 10.times do
   number = Faker::Lorem.characters(number: 5)
   type = %w[cargo passenger]
-  CargoTrain.new(number, type[0])
-  PassengerTrain.new(number, type[1])  
+  CargoTrain.new#(number, type[0])
+  PassengerTrain.new#(number, type[1])
 end
 
 10.times do

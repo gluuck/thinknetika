@@ -2,13 +2,15 @@ module Acсessors
   def attr_accessor_with_history(*attributes)
     attributes.each do |attribute|
       instance_var = "@#{attribute}".to_sym
+      history_name = "@#{attribute}_history".to_sym
       define_method(attribute) { instance_variable_get(instance_var) }
       history = []
-      define_method("#{attribute}=".to_sym) do |v| 
-        instance_variable_set(instance_var, v)
+      define_method("#{attribute}=") do |v| 
         history.push(v)
+        instance_variable_set(instance_var, v)
+        instance_variable_set(history_name, history)
       end
-      define_method("#{attribute}_history".to_sym){ history }      
+      define_method("#{attribute}_history"){ instance_variable_get(history_name) }      
     end       
   end
 

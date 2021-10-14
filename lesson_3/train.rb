@@ -1,23 +1,24 @@
 # frozen_string_literal: true
 
+# require_relative 'cargo_train'
+# require_relative 'passenger_train'
 require_relative 'manufacturer'
 require_relative 'instance_counter'
 require_relative 'validator'
 
 class Train
-  attr_accessor :speed, :number
-  attr_reader :type, :current_station_index, :wagons, :trains
-
   include Manufacturer
   include InstanceCounter
-  include ValidTrain
-  include Validator
-
+  extend Validation
+  NUM = /^\w{3}-?\w{2}$/i
+  attr_reader :current_station_index, :wagons, :trains,:speed, :type
+  validate :number, :format, NUM
+  validate :type, :type, Train
   @@trains = []
 
   qty_instance
 
-  def initialize(number, type)
+  def initialize
     @number = number
     @type = type
     @speed = 0
@@ -25,7 +26,6 @@ class Train
     @current_station_index = 0
     @@trains.push(self)
     #register_instance
-    validate!
   end
 
   def self.all

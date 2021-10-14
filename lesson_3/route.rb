@@ -8,8 +8,8 @@ class Route
   attr_reader :stations
 
   include InstanceCounter
-  include ValidRoute
-  include Validator
+  include Validation
+  #include Validator
 
   qty_instance
 
