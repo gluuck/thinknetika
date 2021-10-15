@@ -5,13 +5,12 @@ require_relative 'validator'
 
 class Station
   include InstanceCounter
-  extend Validation
-  include Validator
+  include Validation
 
   attr_reader :name, :trains
   validate :name, :type, String
   validate :name, :presence
-  
+
   @@stations = []
 
   qty_instance

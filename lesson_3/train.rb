@@ -9,8 +9,7 @@ require_relative 'validator'
 class Train
   include Manufacturer
   include InstanceCounter
-  extend Validation
-  include Validator
+  include Validation
 
   NUM = /^\w{3}-?\w{2}$/i
 
