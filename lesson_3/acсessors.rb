@@ -10,7 +10,7 @@ module Acсessors
         history_name = "@#{attribute}_history".to_sym
 
         define_method(attribute) { instance_variable_get(instance_var) }
-        
+
         history = []
 
         define_method("#{attribute}=") do |v|
@@ -32,6 +32,7 @@ module Acсessors
         raise TypeError unless v.is_a? type
         instance_variable_set(var_name, v)
       end
+      attr_accessor_with_history(attribute)
     end
   end
 end
