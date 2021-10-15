@@ -6,9 +6,12 @@ require_relative 'validator'
 class Station
   include InstanceCounter
   extend Validation
+  include Validator
+
   attr_reader :name, :trains
   validate :name, :type, String
   validate :name, :presence
+  
   @@stations = []
 
   qty_instance
@@ -17,8 +20,8 @@ class Station
     @@stations
   end
 
-  def initialize(nam)
-    @name = nam
+  def initialize(name)
+    @name = name
     @trains = []
     @@stations.push(self)
     register_instance

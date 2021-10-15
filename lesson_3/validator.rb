@@ -1,7 +1,3 @@
-# frozen_string_literal: true
-# require_relative 'cargo_train'
-# require_relative 'passenger_train'
-# require_relative 'train'
 module Validation
   def validate(name, type, *args)
     var_name = "@#{name}".to_sym
@@ -21,5 +17,13 @@ module Validation
         instance_variable_set(var_name,v)
        end
     end
+  end
+end
+
+module Validator
+  def valid?
+    validate
+  rescue StandardError
+    false
   end
 end

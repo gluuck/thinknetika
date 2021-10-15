@@ -10,15 +10,19 @@ class Train
   include Manufacturer
   include InstanceCounter
   extend Validation
+  include Validator
+
   NUM = /^\w{3}-?\w{2}$/i
-  attr_reader :current_station_index, :wagons, :trains,:speed, :type
+
+  attr_reader :current_station_index, :wagons, :trains,:speed, :type,:number
   validate :number, :format, NUM
-  validate :type, :type, Train
+  validate :number, :presence
+
   @@trains = []
 
   qty_instance
 
-  def initialize
+  def initialize(number,type)
     @number = number
     @type = type
     @speed = 0
